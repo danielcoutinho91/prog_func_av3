@@ -1,0 +1,30 @@
+<h1>Listing Despesas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Valor</th>
+      <th>Data</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for despesa <- @despesas do %>
+    <tr>
+      <td><%= despesa.nome %></td>
+      <td><%= despesa.valor %></td>
+      <td><%= despesa.data %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.despesa_path(@conn, :show, despesa) %></span>
+        <span><%= link "Edit", to: Routes.despesa_path(@conn, :edit, despesa) %></span>
+        <span><%= link "Delete", to: Routes.despesa_path(@conn, :delete, despesa), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Despesa", to: Routes.despesa_path(@conn, :new) %></span>

@@ -1,0 +1,5 @@
+<h1>Edit Despesa</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.despesa_path(@conn, :update, @despesa)) %>
+
+<span><%= link "Back", to: Routes.despesa_path(@conn, :index) %></span>

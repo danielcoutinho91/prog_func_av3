@@ -1,0 +1,23 @@
+<h1>Show Receita</h1>
+
+<ul>
+
+  <li>
+    <strong>Nome:</strong>
+    <%= @receita.nome %>
+  </li>
+
+  <li>
+    <strong>Valor:</strong>
+    <%= @receita.valor %>
+  </li>
+
+  <li>
+    <strong>Data:</strong>
+    <%= @receita.data %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.receita_path(@conn, :edit, @receita) %></span> |
+<span><%= link "Back", to: Routes.receita_path(@conn, :index) %></span>

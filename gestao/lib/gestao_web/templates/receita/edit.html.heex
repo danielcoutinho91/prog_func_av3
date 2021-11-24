@@ -1,0 +1,5 @@
+<h1>Edit Receita</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.receita_path(@conn, :update, @receita)) %>
+
+<span><%= link "Back", to: Routes.receita_path(@conn, :index) %></span>
