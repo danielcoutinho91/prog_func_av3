@@ -1,11 +1,20 @@
 defmodule GestaoWeb.TipoController do
+  import GestaoWeb.UsuarioAuth
   use GestaoWeb, :controller
 
   alias Gestao.Financas
   alias Gestao.Financas.Tipo
+  alias GestaoWeb.UsuarioAuth
+
+  plug :fetch_current_usuario
+  plug :require_authenticated_usuario
 
   def index(conn, _params) do
     tipos = Financas.list_tipos()
+    IO.puts("0000000000000000000000000000000000000000")
+    IO.puts("0000000000000000000000000000000000000000")
+    IO.puts("0000000000000000000000000000000000000000")
+    IO.puts("0000000000000000000000000000000000000000")
     render(conn, "index.html", tipos: tipos)
   end
 

@@ -1,6 +1,8 @@
 defmodule GestaoWeb.Router do
   use GestaoWeb, :router
 
+  import GestaoWeb.UsuarioAuth
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -8,6 +10,7 @@ defmodule GestaoWeb.Router do
     plug :put_root_layout, {GestaoWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :fetch_current_usuario
   end
 
   pipeline :api do
@@ -18,7 +21,7 @@ defmodule GestaoWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources  "tipos", TipoController
+    resources "tipos", TipoController
   end
 
   # Other scopes may use custom stacks.
@@ -52,5 +55,38 @@ defmodule GestaoWeb.Router do
 
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
+  end
+
+  ## Authentication routes
+
+  scope "/", GestaoWeb do
+    pipe_through [:browser, :redirect_if_usuario_is_authenticated]
+
+    get "/usuarios/register", UsuarioRegistrationController, :new
+    post "/usuarios/register", UsuarioRegistrationController, :create
+    get "/usuarios/log_in", UsuarioSessionController, :new
+    post "/usuarios/log_in", UsuarioSessionController, :create
+    get "/usuarios/reset_password", UsuarioResetPasswordController, :new
+    post "/usuarios/reset_password", UsuarioResetPasswordController, :create
+    get "/usuarios/reset_password/:token", UsuarioResetPasswordController, :edit
+    put "/usuarios/reset_password/:token", UsuarioResetPasswordController, :update
+  end
+
+  scope "/", GestaoWeb do
+    pipe_through [:browser, :require_authenticated_usuario]
+
+    get "/usuarios/settings", UsuarioSettingsController, :edit
+    put "/usuarios/settings", UsuarioSettingsController, :update
+    get "/usuarios/settings/confirm_email/:token", UsuarioSettingsController, :confirm_email
+  end
+
+  scope "/", GestaoWeb do
+    pipe_through [:browser]
+
+    delete "/usuarios/log_out", UsuarioSessionController, :delete
+    get "/usuarios/confirm", UsuarioConfirmationController, :new
+    post "/usuarios/confirm", UsuarioConfirmationController, :create
+    get "/usuarios/confirm/:token", UsuarioConfirmationController, :edit
+    post "/usuarios/confirm/:token", UsuarioConfirmationController, :update
   end
 end

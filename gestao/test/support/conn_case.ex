@@ -36,4 +36,30 @@ defmodule GestaoWeb.ConnCase do
     on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
+
+  @doc """
+  Setup helper that registers and logs in usuarios.
+
+      setup :register_and_log_in_usuario
+
+  It stores an updated connection and a registered usuario in the
+  test context.
+  """
+  def register_and_log_in_usuario(%{conn: conn}) do
+    usuario = Gestao.ContasFixtures.usuario_fixture()
+    %{conn: log_in_usuario(conn, usuario), usuario: usuario}
+  end
+
+  @doc """
+  Logs the given `usuario` into the `conn`.
+
+  It returns an updated `conn`.
+  """
+  def log_in_usuario(conn, usuario) do
+    token = Gestao.Contas.generate_usuario_session_token(usuario)
+
+    conn
+    |> Phoenix.ConnTest.init_test_session(%{})
+    |> Plug.Conn.put_session(:usuario_token, token)
+  end
 end
