@@ -1,0 +1,26 @@
+<h1>Listing Tipos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for tipo <- @tipos do %>
+    <tr>
+      <td><%= tipo.nome %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.tipo_path(@conn, :show, tipo) %></span>
+        <span><%= link "Edit", to: Routes.tipo_path(@conn, :edit, tipo) %></span>
+        <span><%= link "Delete", to: Routes.tipo_path(@conn, :delete, tipo), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Tipo", to: Routes.tipo_path(@conn, :new) %></span>

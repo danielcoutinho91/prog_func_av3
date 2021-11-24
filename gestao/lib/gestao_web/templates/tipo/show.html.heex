@@ -1,0 +1,13 @@
+<h1>Show Tipo</h1>
+
+<ul>
+
+  <li>
+    <strong>Nome:</strong>
+    <%= @tipo.nome %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.tipo_path(@conn, :edit, @tipo) %></span> |
+<span><%= link "Back", to: Routes.tipo_path(@conn, :index) %></span>
