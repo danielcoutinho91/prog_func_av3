@@ -15,13 +15,13 @@ defmodule GestaoWeb.UsuarioSessionController do
       UsuarioAuth.log_in_usuario(conn, usuario, usuario_params)
     else
       # In order to prevent user enumeration attacks, don't disclose whether the email is registered.
-      render(conn, "new.html", error_message: "Invalid email or password")
+      render(conn, "new.html", error_message: "Email ou senha inválidos")
     end
   end
 
   def delete(conn, _params) do
     conn
-    |> put_flash(:info, "Logged out successfully.")
+    |> put_flash(:info, "Você saiu do sistema com sucesso.")
     |> UsuarioAuth.log_out_usuario()
   end
 end

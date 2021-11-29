@@ -1,4 +1,4 @@
-<h1>Listing Despesas</h1>
+<h1>Lista de Despesas</h1>
 
 <table>
   <thead>
@@ -18,13 +18,13 @@
       <td><%= despesa.data %></td>
 
       <td>
-        <span><%= link "Show", to: Routes.despesa_path(@conn, :show, despesa) %></span>
-        <span><%= link "Edit", to: Routes.despesa_path(@conn, :edit, despesa) %></span>
-        <span><%= link "Delete", to: Routes.despesa_path(@conn, :delete, despesa), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <span><%= link "Detalhes", to: Routes.despesa_path(@conn, :show, despesa) %></span>
+        <span><%= link "Editar", to: Routes.despesa_path(@conn, :edit, despesa) %></span>
+        <span><%= link "Deletar", to: Routes.despesa_path(@conn, :delete, despesa), method: :delete, data: [confirm: "Você tem certeza?"] %></span>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<span><%= link "New Despesa", to: Routes.despesa_path(@conn, :new) %></span>
+<span><%= link "Nova Despesa", to: Routes.despesa_path(@conn, :new) %></span>

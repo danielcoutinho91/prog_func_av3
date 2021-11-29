@@ -19,8 +19,8 @@ defmodule GestaoWeb.UsuarioConfirmationController do
     conn
     |> put_flash(
       :info,
-      "If your email is in our system and it has not been confirmed yet, " <>
-        "you will receive an email with instructions shortly."
+      "Se o seu email está em nosso sistema e não foi confirmado ainda, " <>
+        "você receberá um email com instruções em breve."
     )
     |> redirect(to: "/")
   end
@@ -35,7 +35,7 @@ defmodule GestaoWeb.UsuarioConfirmationController do
     case Contas.confirm_usuario(token) do
       {:ok, _} ->
         conn
-        |> put_flash(:info, "Usuario confirmed successfully.")
+        |> put_flash(:info, "Usuario confirmado com sucesso!")
         |> redirect(to: "/")
 
       :error ->
@@ -49,7 +49,7 @@ defmodule GestaoWeb.UsuarioConfirmationController do
 
           %{} ->
             conn
-            |> put_flash(:error, "Usuario confirmation link is invalid or it has expired.")
+            |> put_flash(:error, "Link para confirmação de usuário é inválido ou expirou")
             |> redirect(to: "/")
         end
     end

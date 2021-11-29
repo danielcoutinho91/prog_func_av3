@@ -1,5 +1,5 @@
-<h1>Edit Despesa</h1>
+<h1 class="label_form">Editar Despesa</h1>
 
 <%= render "form.html", Map.put(assigns, :action, Routes.despesa_path(@conn, :update, @despesa)) %>
 
-<span><%= link "Back", to: Routes.despesa_path(@conn, :index) %></span>
+<span><%= link "Voltar", to: Routes.despesa_path(@conn, :index) %></span>

@@ -1,23 +1,23 @@
-<h1>Show Despesa</h1>
+<h1 class="label_form">Detalhes da Despesa</h1>
 
 <ul>
 
-  <li>
+  <li class="input_form">
     <strong>Nome:</strong>
     <%= @despesa.nome %>
   </li>
 
-  <li>
+  <li class="input_form">
     <strong>Valor:</strong>
     <%= @despesa.valor %>
   </li>
 
-  <li>
+  <li class="input_form">
     <strong>Data:</strong>
     <%= @despesa.data %>
   </li>
 
 </ul>
 
-<span><%= link "Edit", to: Routes.despesa_path(@conn, :edit, @despesa) %></span> |
-<span><%= link "Back", to: Routes.despesa_path(@conn, :index) %></span>
+<span><%= link "Editar", to: Routes.despesa_path(@conn, :edit, @despesa) %></span> |
+<span><%= link "Voltar", to: Routes.despesa_path(@conn, :index) %></span>

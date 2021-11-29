@@ -25,7 +25,7 @@ defmodule GestaoWeb.UsuarioSettingsController do
         conn
         |> put_flash(
           :info,
-          "A link to confirm your email change has been sent to the new address."
+          "Um link para confirmar a alteração de email foi enviado para seu novo email."
         )
         |> redirect(to: Routes.usuario_settings_path(conn, :edit))
 
@@ -41,7 +41,7 @@ defmodule GestaoWeb.UsuarioSettingsController do
     case Contas.update_usuario_password(usuario, password, usuario_params) do
       {:ok, usuario} ->
         conn
-        |> put_flash(:info, "Password updated successfully.")
+        |> put_flash(:info, "Senha alterada com sucesso!")
         |> put_session(:usuario_return_to, Routes.usuario_settings_path(conn, :edit))
         |> UsuarioAuth.log_in_usuario(usuario)
 
@@ -54,12 +54,12 @@ defmodule GestaoWeb.UsuarioSettingsController do
     case Contas.update_usuario_email(conn.assigns.current_usuario, token) do
       :ok ->
         conn
-        |> put_flash(:info, "Email changed successfully.")
+        |> put_flash(:info, "Email alterado com sucesso!")
         |> redirect(to: Routes.usuario_settings_path(conn, :edit))
 
       :error ->
         conn
-        |> put_flash(:error, "Email change link is invalid or it has expired.")
+        |> put_flash(:error, "Link para alterar email é inválido ou expirou.")
         |> redirect(to: Routes.usuario_settings_path(conn, :edit))
     end
   end

@@ -1,4 +1,4 @@
-<h1>Listing Receitas</h1>
+<h1>Lista de Receitas</h1>
 
 <table>
   <thead>
@@ -18,13 +18,13 @@
       <td><%= receita.data %></td>
 
       <td>
-        <span><%= link "Show", to: Routes.receita_path(@conn, :show, receita) %></span>
-        <span><%= link "Edit", to: Routes.receita_path(@conn, :edit, receita) %></span>
-        <span><%= link "Delete", to: Routes.receita_path(@conn, :delete, receita), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <span><%= link "Detalhes", to: Routes.receita_path(@conn, :show, receita) %></span>
+        <span><%= link "Editar", to: Routes.receita_path(@conn, :edit, receita) %></span>
+        <span><%= link "Deletar", to: Routes.receita_path(@conn, :delete, receita), method: :delete, data: [confirm: "Você tem certeza?"] %></span>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<span><%= link "New Receita", to: Routes.receita_path(@conn, :new) %></span>
+<span><%= link "Nova Receita", to: Routes.receita_path(@conn, :new) %></span>

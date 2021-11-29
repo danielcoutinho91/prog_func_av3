@@ -21,7 +21,7 @@ defmodule GestaoWeb.UsuarioResetPasswordController do
     conn
     |> put_flash(
       :info,
-      "If your email is in our system, you will receive instructions to reset your password shortly."
+      "Se o seu email estiver em nosso sistema, você receberá instruções para resetar sua senha em breve."
     )
     |> redirect(to: "/")
   end
@@ -36,7 +36,7 @@ defmodule GestaoWeb.UsuarioResetPasswordController do
     case Contas.reset_usuario_password(conn.assigns.usuario, usuario_params) do
       {:ok, _} ->
         conn
-        |> put_flash(:info, "Password reset successfully.")
+        |> put_flash(:info, "Senha resetada com sucesso.")
         |> redirect(to: Routes.usuario_session_path(conn, :new))
 
       {:error, changeset} ->
@@ -51,7 +51,7 @@ defmodule GestaoWeb.UsuarioResetPasswordController do
       conn |> assign(:usuario, usuario) |> assign(:token, token)
     else
       conn
-      |> put_flash(:error, "Reset password link is invalid or it has expired.")
+      |> put_flash(:error, "Link para resetar senha é inválido ou expirou.")
       |> redirect(to: "/")
       |> halt()
     end

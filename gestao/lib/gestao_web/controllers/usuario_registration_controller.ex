@@ -20,7 +20,7 @@ defmodule GestaoWeb.UsuarioRegistrationController do
           )
 
         conn
-        |> put_flash(:info, "Usuario created successfully.")
+        |> put_flash(:info, "Usuario criado com sucesso!")
         |> UsuarioAuth.log_in_usuario(usuario)
 
       {:error, %Ecto.Changeset{} = changeset} ->

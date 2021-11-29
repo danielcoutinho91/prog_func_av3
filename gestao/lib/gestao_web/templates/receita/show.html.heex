@@ -1,23 +1,23 @@
-<h1>Show Receita</h1>
+<h1 class="label_form">Detalhes da Receita</h1>
 
 <ul>
 
-  <li>
+  <li class="input_form">
     <strong>Nome:</strong>
     <%= @receita.nome %>
   </li>
 
-  <li>
+  <li class="input_form">
     <strong>Valor:</strong>
     <%= @receita.valor %>
   </li>
 
-  <li>
+  <li class="input_form">
     <strong>Data:</strong>
     <%= @receita.data %>
   </li>
 
 </ul>
 
-<span><%= link "Edit", to: Routes.receita_path(@conn, :edit, @receita) %></span> |
-<span><%= link "Back", to: Routes.receita_path(@conn, :index) %></span>
+<span><%= link "Editar", to: Routes.receita_path(@conn, :edit, @receita) %></span> |
+<span><%= link "Voltar", to: Routes.receita_path(@conn, :index) %></span>

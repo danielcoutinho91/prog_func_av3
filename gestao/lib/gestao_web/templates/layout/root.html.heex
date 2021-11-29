@@ -13,18 +13,18 @@
     <header>
       <section class="container">
         <nav>
-          <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
+          <ul class="ul_navigation">
+            <li class="li_navigation"><a href="/">Início</a></li>
             <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
-              <li><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
+              <li class="li_navigation"><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
             <% end %>
-            <li><%= link "Receitas", to: Routes.receita_path(@conn, :index) %></li>
-            <li><%= link "Despesas", to: Routes.despesa_path(@conn, :index) %></li>
+            <li class="li_navigation"><%= link "Receitas", to: Routes.receita_path(@conn, :index) %></li>
+            <li class="li_navigation"><%= link "Despesas", to: Routes.despesa_path(@conn, :index) %></li>
           </ul>
           <%= render "_usuario_menu.html", assigns %>
         </nav>
-        <a href="https://phoenixframework.org/" class="phx-logo">
-          <img src={Routes.static_path(@conn, "/images/phoenix.png")} alt="Phoenix Framework Logo"/>
+        <a href="/" class="phx-logo">
+          <img src={Routes.static_path(@conn, "/images/gestao.png")} alt="Phoenix Framework Logo"/>
         </a>
       </section>
     </header>
