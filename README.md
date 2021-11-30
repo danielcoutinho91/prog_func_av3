@@ -13,4 +13,4 @@ de UI a sua escolha;
 - [DESAFIO] (2 pontos) - A aplicação deve permitir que um usuário realize login na aplicação (autenticação);
 
 ### Link para o github
-- [GitHub Pages](https://pages.github.com/)
+- [GitHub](https://github.com/danielcoutinho91/prog_func_av3)
